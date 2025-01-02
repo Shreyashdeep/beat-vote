@@ -6,10 +6,14 @@ export default async function Creator({
     }
 }:{
     params:{
-        creatorId:string
+        creatorId:string;
     }
 }){
     return <div>
         <StreamView creatorId={creatorId} playVideo={false}/>
     </div>
 }
+
+
+
+
