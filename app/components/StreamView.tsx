@@ -100,20 +100,20 @@ export default function StreamView({
       }),
     });
 
-    if (res.ok) {
+    // if (res.ok) {
       const newVideo = await res.json();
       setQueue([...queue, newVideo]);
-    } else {
-      toast.error("Failed to add video to queue. Please try again.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
+    // } else {
+    //   toast.error("Failed to add video to queue. Please try again.", {
+    //     position: "top-right",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //   });
+    // }
     setLoading(false);
     setInputLink("");
   };
