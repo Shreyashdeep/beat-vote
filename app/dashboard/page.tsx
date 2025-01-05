@@ -19,6 +19,7 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 // import { METHODS } from "http";
 // import { set } from "zod";
 import StreamView from "../components/StreamView";
+import { User } from 'lucide-react';
 
 interface Video {
   id: string;
@@ -35,9 +36,45 @@ interface Video {
   // thumbnailUrl: string
 }
 
-const creatorId = "e51b2829-aa03-4269-891b-df16fc25dec6";
+
+
+const creatorId = "4b618f60-499b-4097-b7be-640406562322";
+// const creatorId = User.id;
+
+// export default function Component() {
+//   return <StreamView creatorId={creatorId} playVideo={true}/>
+  
+// }
+
+
+
+
+import { useEffect, useState } from 'react'
+// import StreamView from '../components/StreamView'
 
 export default function Component() {
-  return <StreamView creatorId={creatorId} playVideo={true}/>
-  
+    const [creatorId, setCreatorId] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchUserData() {
+            try {
+                const response = await fetch("/api/user");
+                const data = await response.json();
+                setCreatorId(data.user?.id || null);
+            } catch (e) {
+                console.error("Error fetching user data:", e);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchUserData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return <StreamView creatorId={creatorId || ""} playVideo={true} />;
 }
