@@ -157,8 +157,6 @@ import { z } from "zod";
 //@ts-ignore
 import youtubesearchapi from "youtube-search-api";
 import { YT_REGEX } from "@/app/lib/util";
-
-// import { YT_REGEX } from "@/app/lib/utils";
 import { getServerSession } from "next-auth";
 
 const CreateStreamSchema = z.object({
@@ -232,7 +230,6 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
     const creatorId = req.nextUrl.searchParams.get("creatorId");
     const session = await getServerSession();
-     // TODO: You can get rid of the db call here 
      const user = await prismaClient.user.findFirst({
         where: {
             email: session?.user?.email ?? ""

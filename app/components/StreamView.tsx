@@ -9,15 +9,10 @@ import { ChevronDown, ChevronUp, Share2, Axis3DIcon } from "lucide-react";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import YouTubeEmbed from "@/next/third-parties/google";
-// import axios from "axios";
 import { Appbar } from "../components/Appbar";
-// import { url } from "inspector";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { YT_REGEX } from "@/app/lib/util";
-// import { METHODS } from "http";
-// import { set } from "zod";
 // @ts-ignore
 import YouTubePlayer from "youtube-player";
 
@@ -33,7 +28,6 @@ interface Video {
   userId: string;
   upvotes: number;
   haveUpvoted: boolean;
-  // thumbnailUrl: string
 }
 
 export default function StreamView({
@@ -165,8 +159,6 @@ export default function StreamView({
 
   const handleShare = () => {
     const shareableLink = `${window.location.hostname}/creator/${creatorId}`;
-    // const handleShare = () => {
-    //   const shareableLink: string = window.location.href;
     navigator.clipboard
       .writeText(shareableLink)
       .then(() => {
@@ -192,34 +184,7 @@ export default function StreamView({
           progress: undefined,
         });
       });
-    // };
   };
-
-  // useEffect(() => {
-  //   // Generate a shareable link based on the current queue
-  //   const queueIds = queue.map((video) => video.id).join(",");
-  //   const link = `${window.location.origin}?queue=${queueIds}`;
-  //   setShareableLink(link);
-  // }, [queue]);
-
-  // const extractVideoId = (url: string) => {
-  //   const regex =
-  //     /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-  //   const match = url.match(regex);
-  //   return match ? match[1] : null;
-  // };
-
-  // const getThumbnailUrl = (videoId: string) => {
-  //   return `https://img.youtube.com/vi/${videoId}/default.jpg`;
-  // };
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setInputLink(e.target.value);
-  //   const videoId = extractVideoId(e.target.value);
-  //   if (videoId) {
-  //     setPreviewId(videoId);
-  //   }
-  // };
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 ">
@@ -261,13 +226,7 @@ export default function StreamView({
                     </Card>
                   )}
 
-                  {/* Video preview
-              {previewId && (
-                <div className="w-full">
-                  <h2 className="text-lg font-semibold mb-2">Preview</h2>
-                  <YouTubeEmbed videoid={previewId} height={200} />
-                </>
-              )} */}
+                  
                 </div>
 
                 {/* Now Playing section */}
@@ -278,12 +237,7 @@ export default function StreamView({
                       {playVideo ? (
                         <>
                         <div ref={videoPlayerRef} className="w-full"/>
-                          {/* <iframe
-                            width={"100%"}
-                            height={400}
-                            src={`https:www.youtube.com/embed/${currentVideo.extractedId}?autoplay=1`}
-                            allow="autoplay"
-                          ></iframe> */}
+                          
                         </>
                       ) : (
                         <>
@@ -360,15 +314,7 @@ export default function StreamView({
                         )}
                         <span>{video.upvotes}</span>
                       </Button>
-                      {/* <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => handleVote(index, 0, -1)}
-                          className="border-gray-600 text-gray-300 hover:bg-gray-700"
-                        >
-                          <ChevronDown className="h-4 w-4" />
-                          <span>{video.downvotes}</span>
-                        </Button> */}
+                      
                     </div>
                   </div>
                 </CardContent>
