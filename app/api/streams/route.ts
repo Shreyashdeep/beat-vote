@@ -158,6 +158,17 @@ import { z } from "zod";
 import youtubesearchapi from "youtube-search-api";
 import { YT_REGEX } from "@/app/lib/util";
 import { getServerSession } from "next-auth";
+import cors from "cors"
+import express from "express";
+const app = express();
+
+// Enable CORS globally
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+}));
+
 
 const CreateStreamSchema = z.object({
     creatorId: z.string(),
