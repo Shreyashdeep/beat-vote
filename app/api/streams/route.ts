@@ -171,13 +171,6 @@ const CreateStreamSchema = z.object({
 const MAX_QUEUE_LEN = 20;
 
 export async function POST(req: NextRequest) {
-  app.use(
-    cors({
-      origin: "*", // Allow all origins
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
-      allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-    })
-  );
   try {
     const data = CreateStreamSchema.parse(await req.json());
     const isYt = data.url.match(YT_REGEX);
