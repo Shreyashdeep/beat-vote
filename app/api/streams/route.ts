@@ -171,10 +171,6 @@ const CreateStreamSchema = z.object({
 const MAX_QUEUE_LEN = 20;
 
 export async function POST(req: NextRequest) {
-  const bodyParser = require("body-parser");
-
-  app.use(bodyParser.json()); // Parse JSON bodies
-  app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
   app.use(
     cors({
       origin: "*", // Allow all origins
